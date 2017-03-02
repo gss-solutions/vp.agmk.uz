@@ -9,7 +9,7 @@ $(function() {
 
 	//E-mail Ajax Send
 	//Documentation & Example: https://github.com/agragregra/uniMail
-	$("form").submit(function() { //Change
+	/*$("form").submit(function() { //Change
 		var th = $(this);
 		$.ajax({
 			type: "POST",
@@ -23,7 +23,7 @@ $(function() {
 			}, 1000);
 		});
 		return false;
-	});
+	});*/
 
 	//Chrome Smooth Scroll
 	try {
