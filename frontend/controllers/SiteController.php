@@ -36,19 +36,8 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
-     * @return mixed
-     */
-    /*public function actionIndex()
-    {
-        return $this->render('index');
-    }*/
-
-
-    /**
      * Creates a new Treatment model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
+     * If creation is successful, the browser will be redirected to the 'index' page.
      * @return mixed
      */
     public function actionIndex()
@@ -61,7 +50,6 @@ class SiteController extends Controller
             Yii::$app->session->setFlash('success', 'Спасибо за Ваше обращение. Оно будет расмотренно в ближайшее время.
                 Дополнительная информация отправлена на email указынный в обращении.');
             return $this->refresh();
-            //return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('index', [
                 'model' => $model,
@@ -94,25 +82,31 @@ class SiteController extends Controller
 
     private function makeTreatment(Treatment $treatment)
     {
-        $treatment->status_treatment = '1';
-        $treatment->created_at = '1111';
-        $treatment->code = '222';
-        $treatment->file = 'dsfdsf';
-        $treatment->ip = '192.168.0.131';
-        $treatment->updated_at = '1111';
+        $treatment->status_treatment = $treatment::STATUS_TREATMENT['1'];
+        $treatment->created_at = date('U');
+        $treatment->code = $this->getCode();
+        $treatment->file = '';
+        $treatment->ip = Yii::$app->request->userIP;
+        $treatment->updated_at = date('U');
 
         return $treatment;
     }
 
-    private function makeCustomer(CustomerRecord $customer_record, PhoneRecord $phone_record)
-    {
-        $name = $customer_record->name;
-        $birth_date = new \DateTime($customer_record->birth_date);
+    private function getCode($length = 8){
+        $code = $this->generateCode();
+        $treatment_code = Treatment::findOne(['code' => $code]);
+        while(isset($treatment_code))
+            $code = $this->generateCode();
+        return $code;
+    }
 
-        $customer = new Customer($name, $birth_date);
-        $customer->notes = $customer_record->notes;
-        $customer->phones[] = new Phone($phone_record->number);
-
-        return $customer;
+    private function generateCode($length = 8){
+        $chars = 'abdefhiknrstyzABDEFGHKNQRSTYZ23456789';
+        $numChars = strlen($chars);
+        $string = '';
+        for ($i = 0; $i < $length; $i++) {
+            $string .= substr($chars, rand(1, $numChars) - 1, 1);
+        }
+        return $string;
     }
 }

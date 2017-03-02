@@ -33,6 +33,8 @@ class Treatment extends \yii\db\ActiveRecord
 {
     public $verifyCode;
 
+    const STATUS_TREATMENT = ['1' => 'Принято', '2' => 'В обработке', '3' => 'Закрыто'];
+
     /**
      * @inheritdoc
      */
