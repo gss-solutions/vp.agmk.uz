@@ -55,32 +55,19 @@ class SiteController extends Controller
     {
         $model = new Treatment();
 
+        $model = $this->makeTreatment($model);
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Спасибо за Ваше обращение. Оно будет расмотренно в ближайшее время.
+                Дополнительная информация отправлена на email указынный в обращении.');
+            return $this->refresh();
+            //return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('index', [
                 'model' => $model,
             ]);
         }
     }
-
-
-    /*public function actionCreate()
-    {
-        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
-            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return ActiveForm::validate($model);
-        }
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
-        } else {
-            return $this->renderAjax('create', [
-                'model' => $model,
-                'cities' => $cities
-            ]);
-        }
-    }*/
-
 
     /**
      * Displays contact page.
@@ -103,5 +90,29 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    private function makeTreatment(Treatment $treatment)
+    {
+        $treatment->status_treatment = '1';
+        $treatment->created_at = '1111';
+        $treatment->code = '222';
+        $treatment->file = 'dsfdsf';
+        $treatment->ip = '192.168.0.131';
+        $treatment->updated_at = '1111';
+
+        return $treatment;
+    }
+
+    private function makeCustomer(CustomerRecord $customer_record, PhoneRecord $phone_record)
+    {
+        $name = $customer_record->name;
+        $birth_date = new \DateTime($customer_record->birth_date);
+
+        $customer = new Customer($name, $birth_date);
+        $customer->notes = $customer_record->notes;
+        $customer->phones[] = new Phone($phone_record->number);
+
+        return $customer;
     }
 }

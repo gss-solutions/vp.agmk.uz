@@ -91,6 +91,9 @@ $ApplicationGreenAssetBundle = ApplicationGreenAssetBundle::register($this);
             <div class="row">
                 <div class="header-content-menu hidden-xs clearfix">
                     <div class="col-md-12 col-sm-12">
+                        <?= Alert::widget() ?>
+                    </div>
+                    <div class="col-md-12 col-sm-12">
                         <h2 class="header-content-menu-text ">В виртуальную приёмную можно направить обращение 3 способами:</h2>
                     </div>
                     <div class="col-md-12 col-sm-12">

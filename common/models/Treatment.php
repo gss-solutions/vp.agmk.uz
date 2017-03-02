@@ -31,6 +31,8 @@ use yii\data\ActiveDataProvider;
  */
 class Treatment extends \yii\db\ActiveRecord
 {
+    public $verifyCode;
+
     /**
      * @inheritdoc
      */
@@ -58,6 +60,7 @@ class Treatment extends \yii\db\ActiveRecord
             [['ip'], 'ip'],
             [['text'], 'safe'],
             [['answer'], 'safe'],
+            ['verifyCode', 'captcha'],
         ];
     }
 
@@ -85,6 +88,7 @@ class Treatment extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
             'ip' => 'Ip',
+            'verifyCode' => 'Введите проверочный код с картинки',
         ];
     }
 

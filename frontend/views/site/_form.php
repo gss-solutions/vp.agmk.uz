@@ -2,10 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\captcha\Captcha;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Treatment */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <section class="treatment">
@@ -14,6 +16,7 @@ use yii\widgets\ActiveForm;
             <div class="col-md-6 col-md-push-6 col-xs-12">
                 <div class="treatment-form">
                     <?php $form = ActiveForm::begin(); ?>
+                    <?php echo $form->errorSummary($model); ?>
                         <fieldset class="treatment-form-fieldset">
                             <legend class="treatment-form-title" align="center"><h1>Отправить обращение</h1></legend>
 
@@ -48,6 +51,11 @@ use yii\widgets\ActiveForm;
 
                             <?= $form->field($model, 'text')->textarea(['rows' => '10'])->
                             label('Текст обращения', ['class' => 'input-title']); ?>
+
+                            <?= $form->field($model, 'verifyCode')->widget(Captcha::className(), [
+                                'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
+                            ])->label('Введите проверочный код с картинки<span class="star">*</span>', ['class' => 'input-title']) ?>
+
 
                             <div class="form-button">
                                 <input type="submit" value="Отправить обращение" class="button">
