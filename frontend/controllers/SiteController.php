@@ -64,6 +64,24 @@ class SiteController extends Controller
         }
     }
 
+
+    /*public function actionCreate()
+    {
+        if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
+            Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return ActiveForm::validate($model);
+        }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        } else {
+            return $this->renderAjax('create', [
+                'model' => $model,
+                'cities' => $cities
+            ]);
+        }
+    }*/
+
+
     /**
      * Displays contact page.
      *

@@ -6,6 +6,7 @@ use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
+
 /**
  * This is the model class for table "treatment".
  *
@@ -45,10 +46,16 @@ class Treatment extends \yii\db\ActiveRecord
     {
         return [
             [['fio', 'address', 'email', 'phone', 'sex', 'birthday', 'status_person', 'status_treatment', 'code', 'created_at', 'updated_at'], 'required'],
-            [['sex', 'birthday', 'businessman', 'created_at', 'updated_at'], 'integer'],
+            [['sex', 'businessman'], 'integer'],
+            ['sex', 'in', 'range' => [ 1, 2 ], 'message' => 'Выберите «Пол».'],
+            ['status_person', 'in', 'range' => [ 1,2,3,4 ], 'message' => 'Выберите «Статус».'],
+            ['email', 'email', 'message' => 'Значение поля «Электронная почта» не является коректным email адресом.'],
+            ['birthday', 'match', 'pattern' => '/^[1-2][0-9][0-9][0-9]$/i', 'message' => 'Укажите только год рождения, без даты. Например: 1972'],
+            ['birthday', 'integer', 'message' => 'Укажите только год рождения, без даты. Например: 1972'],
             [['fio', 'address', 'email', 'phone', 'businessman_type'], 'string', 'max' => 255],
             [['status_person', 'status_treatment', 'file', 'code'], 'string', 'max' => 32],
             [['ip'], 'string', 'max' => 15],
+            [['ip'], 'ip'],
             [['text'], 'safe'],
             [['answer'], 'safe'],
         ];

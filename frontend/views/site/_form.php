@@ -17,37 +17,37 @@ use yii\widgets\ActiveForm;
                         <fieldset class="treatment-form-fieldset">
                             <legend class="treatment-form-title" align="center"><h1>Отправить обращение</h1></legend>
 
-                            <?= $form->field($model, 'fio')->textInput(['maxlength' => true, 'class' => 'input input-red'])->
+                            <?= $form->field($model, 'fio')->textInput(['maxlength' => true, 'class' => 'input form-control', "aria-invalid" => "true"])->
                                 label('Ф.И.О<span class="star">*</span>', ['class' => 'input-title input-title-first']); ?>
 
-                            <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'class' => 'input input-red'])->
+                            <?= $form->field($model, 'address')->textInput(['maxlength' => true, 'class' => 'input form-control'])->
                             label('Адрес<span class="star">*</span>', ['class' => 'input-title']); ?>
 
-                            <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'class' => 'input input-red'])->
+                            <?= $form->field($model, 'email')->textInput(['maxlength' => true, 'class' => 'input form-control'])->
                             label('Электронная почта<span class="star">*</span>', ['class' => 'input-title']); ?>
 
-                            <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'class' => 'input input-red'])->
+                            <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'class' => 'input form-control'])->
                             label('Телефон<span class="star">*</span>', ['class' => 'input-title']); ?>
 
                             <?= $form->field($model, 'sex')->dropDownList(array('0'=>'Выберите пол', '1'=>'Мужской','2'=>'Женский'),
-                                ['options' => ['0' => ['selected'=>true]], 'class' => 'select input-red'])->
+                                ['options' => ['0' => ['selected'=>true]], 'class' => 'select'])->
                             label('Пол<span class="star">*</span>', ['class' => 'input-title']); ?>
 
-                            <?= $form->field($model, 'birthday')->textInput(['class' => 'input input-red'])->
+                            <?= $form->field($model, 'birthday')->textInput(['class' => 'input form-control'])->
                             label('Год рождения<span class="star">*</span>', ['class' => 'input-title']); ?>
 
                             <?= $form->field($model, 'status_person')->dropDownList(array('0'=>'Выберите статус', '1'=>'Занят-работает','2'=>'Безработный','3'=>'Пенсионер','4'=>'Студент'),
-                                ['options' => ['0' => ['selected'=>true]], 'class' => 'select input-red'])->
+                                ['options' => ['0' => ['selected'=>true]], 'class' => 'select'])->
                             label('Статус<span class="star">*</span>', ['class' => 'input-title']); ?>
 
                             <?= $form->field($model, 'businessman')->checkbox(['label' => false, 'class' => 'input-checked input-red'])->
-                            label('Предприниматель<span class="star">*</span>', ['class' => 'input-checked-title']);  ?>
+                            label('Предприниматель', ['class' => 'input-checked-title']);  ?>
 
-                            <?= $form->field($model, 'businessman_type')->textInput(['maxlength' => true, 'class' => 'input input-red'])->
+                            <?= $form->field($model, 'businessman_type')->textInput(['maxlength' => true, 'class' => 'input form-control'])->
                             label('Тип бизнесмена', ['class' => 'input-title']); ?>
 
-                            <?= $form->field($model, 'text')->textarea(['class' => 'textarea input-red', 'rows' => '10'])->
-                            label('Текст обращения<span class="star">*</span>', ['class' => 'input-title']); ?>
+                            <?= $form->field($model, 'text')->textarea(['rows' => '10'])->
+                            label('Текст обращения', ['class' => 'input-title']); ?>
 
                             <div class="form-button">
                                 <input type="submit" value="Отправить обращение" class="button">

@@ -32,7 +32,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'businessman_type')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'text')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'file')->textInput(['maxlength' => true]) ?>
 
