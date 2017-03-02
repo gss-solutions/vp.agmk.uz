@@ -19,4 +19,14 @@ $(function() {
 
 	$("img, a").on("dragstart", function(event) { event.preventDefault(); });
 
+    $("#treatment-businessman").click(function() {
+        if($("#treatment-businessman").is(':checked')) {
+            $("#treatment-businessman_type").removeClass('hidden');
+            $("#treatment-businessman_type_label").removeClass('hidden');
+        } else {
+            $("#treatment-businessman_type").addClass('hidden');
+            $("#treatment-businessman_type_label").addClass('hidden');
+        }
+    })
+
 });

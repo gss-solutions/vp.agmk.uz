@@ -43,11 +43,11 @@ use yii\captcha\Captcha;
                                 ['options' => ['0' => ['selected'=>true]], 'class' => 'select'])->
                             label('Статус<span class="star">*</span>', ['class' => 'input-title']); ?>
 
-                            <?= $form->field($model, 'businessman')->checkbox(['label' => false, 'class' => 'input-checked input-red'])->
+                            <?= $form->field($model, 'businessman')->checkbox(['label' => false, 'class' => 'input-checked'])->
                             label('Предприниматель', ['class' => 'input-checked-title']);  ?>
 
-                            <?= $form->field($model, 'businessman_type')->textInput(['maxlength' => true, 'class' => 'input form-control'])->
-                            label('Тип бизнесмена', ['class' => 'input-title']); ?>
+                            <?= $form->field($model, 'businessman_type')->textInput(['maxlength' => true, 'class' => 'input form-control hidden'])->
+                            label('Наименование субъекта предпринимательства', ['id' => 'treatment-businessman_type_label', 'class' => 'input-title hidden']); ?>
 
                             <?= $form->field($model, 'text')->textarea(['rows' => '10'])->
                             label('Текст обращения', ['class' => 'input-title']); ?>

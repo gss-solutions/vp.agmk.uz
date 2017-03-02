@@ -80,7 +80,7 @@ class Treatment extends \yii\db\ActiveRecord
             'status_person' => 'Статус',
             'status_treatment' => 'Status Treatment',
             'businessman' => 'Предприниматель',
-            'businessman_type' => 'Businessman Type',
+            'businessman_type' => 'Наименование субъекта предпринимательства',
             'text' => 'Текст обращения',
             'file' => 'Файл',
             'answer' => 'Ответ',
